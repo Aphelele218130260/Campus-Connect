@@ -1,0 +1,76 @@
+.room-admin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #009688;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header h1 {
+  color: #fff;
+  font-size: 24px;
+}
+
+.room-admin-content {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.room-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.room-admin-table th, .room-admin-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.room-admin-table th {
+  background-color: #f5f5f5;
+}
+
+.location-dropdown {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-group button {
+  background-color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background-color: #ddd;
+}
+
+.btn-clear, .btn-add, .btn-exit {
+  width: 80px;
+}

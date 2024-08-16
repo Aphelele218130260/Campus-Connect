@@ -1,0 +1,82 @@
+
+.studentHomeDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #009688;
+    height: 100vh;
+    width: 100vw;
+    /*padding: 20px;*/
+    /*border-radius: 10px;*/
+}
+
+.studentHomeHeader{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #444444;
+    width: 100vw;
+}
+
+.studentHomeTopSection{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.studentHomeBottomSection{
+    /*display: flex;*/
+    padding: 20px;
+    float: left;
+    margin-left: 0;
+}
+
+.tableFilterSection{
+    width: 25%;
+    padding: 20px;
+    float: right;
+}
+
+.btnLogout{
+    float: right;
+    background-color: #d9d9d9;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btnDiv {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.studentRoomsTable{
+    width: 75vw;
+    border-collapse: collapse; 
+    border-spacing: 0;
+    background-color: #d9d9d9;
+    color: #000;
+}
+
+.studentRoomsTable th, .studentRoomsTable td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+  .studentRoomsTable td {
+    border-bottom: none;
+}
+
+.studentRoomsTable tr {
+    border-bottom: none;
+}
+
+.btnSubmit {
+background-color: #d9d9d9;
+color: black;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+}

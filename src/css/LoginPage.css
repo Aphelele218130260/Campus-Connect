@@ -1,0 +1,77 @@
+/* LoginPage.css */
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #34a1a7; /* Background color from the image */
+    color: #fff; /* White text color */
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #4a4a4a; /* Dark gray header background */
+    padding: 10px 20px;
+}
+
+.logo {
+    height: 50px; /* Adjust logo size as needed */
+}
+
+.exit-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.login-container {
+    background-color: #34a1a7; /* Match the background color */
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.role-selection {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sign-in-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.sign-up-text {
+    margin-top: 20px;
+}
+
+.sign-up-text a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}

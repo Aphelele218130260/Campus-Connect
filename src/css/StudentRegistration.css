@@ -1,0 +1,165 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #2eabab; /* Background color for the whole screen */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+}
+
+.header {
+    background-color: #333; /* Blackish grey color */
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed; /* Fixed position at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.header .logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.header h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 80px; /* Margin to account for the fixed header */
+}
+
+.registration-container {
+    background-color: #e1f4f3;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px; /* Slightly wider form */
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Space between input fields */
+    margin-bottom: 20px; /* Space below input groups */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(50% - 10px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:last-child,
+input[type="email"]:last-child,
+input[type="password"]:last-child {
+    width: 100%;
+}
+
+.gender,
+.dob {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 10px);
+}
+
+.gender label,
+.dob label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black; /* Text color for labels */
+}
+
+.dob-inputs {
+    display: flex;
+    gap: 10px; /* Space between select inputs */
+}
+
+.dob-inputs select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow buttons to stack on small screens */
+}
+
+button {
+    width: 48%; /* Adjusted width to fit within flex container */
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #b3e4e2;
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+button:hover {
+    background-color: #89b8b5;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+    }
+
+    .gender,
+    .dob {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}

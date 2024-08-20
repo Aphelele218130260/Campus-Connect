@@ -1,20 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import RoomAdministration from './components/RoomAdministration';
-// import StudentAdministration from './components/StudentAdministration';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import RoomAdministration from "./components/RoomAdministration";
+import LoginPage from "./components/LoginPage.jsx";
+import HomePage from "./components/HomePage.jsx";
+import SignUpPage from "./components/SignupPage.jsx";
+import StudentAdministration from "./components/StudentAdministration.jsx";
+//import StudentAdministration from './components/StudentAdministration';
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/RoomAdministration" element={<RoomAdministration />} />
-                {/* Add more routes as needed */}
-                {/* <Route path="/students" element={<StudentAdministration />} /> */}
-            </Routes>
-        </Router>
-    );
+  return (
+      <Router>
+        <div className="CampusConnect">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/room" element={<RoomAdministration />} />
+            <Route path="/student" element={<StudentAdministration />} />
+            <Route path="/signup" element={<SignUpPage />} />
+          </Routes>
+        </div>
+      </Router>
+
+      //<HomePage />
+      //<LoginPage />
+      //<RoomAdministration />
+      //<StudentAdministration />
+  );
 }
 
 export default App;

@@ -1,10 +1,25 @@
+/* Reset default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure all elements use box-sizing */
+* {
+    box-sizing: border-box;
+}
+
 .dashboard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #38ada9;
+    min-height: 100vh; /* Ensure it covers the full height of the viewport */
+    width: 100%; /* Ensure it covers the full width of the viewport */
+    background-color: #38ada9; /* Set the background color to blue */
     text-align: center;
     color: white;
 }
@@ -17,10 +32,17 @@
     top: 0;
     left: 0;
     text-align: center;
+    z-index: 1000;
 }
 
 .dashboard-content {
-    margin-top: 100px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Make sure content spans the full width */
+    margin-top: 60px; /* Account for the fixed header */
 }
 
 .services {

@@ -14,11 +14,10 @@ const Dashboard = () => {
                 <h2>Welcome to the Administrator Dashboard</h2>
                 <p>Select one of the services below</p>
                 <div className="services">
-
-                    <div className="service" onClick={() => navigate('/RoomAdministration')}>
-                        ROOMS
+                    {/* "ROOMS" link that navigates to the RoomAdministration component */}
+                    <div className="service" onClick={() => navigate('/room')}>
+                        <a href="#!" className="service-link">ROOMS</a>
                     </div>
-
                 </div>
             </div>
         </div>

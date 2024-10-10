@@ -6,8 +6,10 @@ import RoomAdministration from "./components/RoomAdministration";
 import LoginPage from "./components/LoginPage.jsx";
 import HomePage from "./components/HomePage.jsx";
 import SignUpPage from "./components/SignupPage.jsx";
-import StudentAdministration from "./components/StudentAdministration.jsx";
+//import StudentAdministration from "./components/StudentAdministration.jsx";
 import Dashboard from "./components/Dashboard.jsx";
+import StudentHome from "./components/StudentHome.jsx";
+//import RoomComponent from "./components/tmp/RoomComponent.jsx"
 //import StudentAdministration from './components/StudentAdministration';
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/room" element={<RoomAdministration />} />
-            <Route path="/student" element={<StudentAdministration />} />
+            <Route path="/student" element={<StudentHome />} />
             <Route path="/signup" element={<SignUpPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
 

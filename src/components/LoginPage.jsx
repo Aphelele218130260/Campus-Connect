@@ -12,7 +12,7 @@ const LoginPage = () => {
 
     const handleSignIn = () => {
         if (role === 'admin') {
-            navigate('/room'); // Navigate to the RoomAdministration page (or any admin-specific page)
+            navigate('/dashboard'); // Navigate to the RoomAdministration page (or any admin-specific page)
         } else if (role === 'student') {
             navigate('/student'); // Navigate to the StudentAdministration page
         }

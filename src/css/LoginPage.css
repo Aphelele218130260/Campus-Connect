@@ -1,77 +1,114 @@
 /* LoginPage.css */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+}
+
 .login-page {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #34a1a7; /* Background color from the image */
-    color: #fff; /* White text color */
+    background-color: #ffffff;
+    /* White background */
+    color: #4cb5f5;
+    /* Blue text */
     font-family: Arial, sans-serif;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.page-header {
+    position: absolute;
+    top: 20px;
     width: 100%;
-    background-color: #4a4a4a; /* Dark gray header background */
-    padding: 10px 20px;
+    text-align: center;
 }
 
-.logo {
-    height: 50px; /* Adjust logo size as needed */
-}
-
-.exit-btn {
-    background-color: white;
-    color: black;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px 15px;
-    cursor: pointer;
+.page-header h1 {
+    font-size: 3rem;
+    color: #8f44fd;
+    /* Purple color for the header */
 }
 
 .login-container {
-    background-color: #34a1a7; /* Match the background color */
-    padding: 20px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #f4f4f9;
+    /* Light background for login box */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container div {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #8f44fd;
+    /* Match with the header purple */
 }
 
 .input-field {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #4cb5f5;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    font-size: 1rem;
 }
 
-.role-selection {
+.role-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
 }
 
-.sign-in-btn {
-    background-color: white;
-    color: black;
-    border: 1px solid #ddd;
+.role-btn {
+    width: 48%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
     border-radius: 5px;
-    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.student-btn {
+    background-color: #4cb5f5;
+    /* Blue button */
+    color: white;
+}
+
+.admin-btn {
+    background-color: #8f44fd;
+    /* Purple button */
+    color: white;
+}
+
+.role-btn:hover {
+    opacity: 0.9;
 }
 
 .sign-up-text {
-    margin-top: 20px;
+    color: #4cb5f5;
+    font-size: 1rem;
 }
 
-.sign-up-text a {
-    color: white;
-    text-decoration: underline;
-    cursor: pointer;
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        /* Adjust for smaller screens */
+        padding: 20px;
+    }
 }

@@ -7,6 +7,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     return (
+        //comment
         <div className="dashboard">
             <header className="dashboard-header">
                 <h1>Campus Connect</h1>

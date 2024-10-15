@@ -53,7 +53,7 @@ body, html {
 .service {
     width: 150px;
     height: 150px;
-    background-size: cover; /* Ensure the image covers the entire button */
+    background-size: cover; /*Ensure the image covers the entire button */
     background-position: center; /* Center the background image */
     border-radius: 10px;
     font-weight: bold;

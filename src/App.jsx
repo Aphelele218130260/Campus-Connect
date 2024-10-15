@@ -22,11 +22,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/RoomAdministration" element={<RoomAdministration />} />
-<<<<<<< HEAD
-            <Route path="/student" element={<StudentAdministration />} />
-=======
             <Route path="/student" element={<StudentHome />} />
->>>>>>> 61fead86e9b0d173bcf505bb8baf38feb9fdc757
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/business" element= {<Business/>}/>

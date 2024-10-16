@@ -22,69 +22,67 @@ const StudentHome = () => {
 
   useEffect(() => {
     if (selectedProperty) {
-        const roomsForProperty = rooms.filter(room => 
-            room.property.propertyID === selectedProperty && !room.occupied
-        );
-        console.log("Filtered available rooms:", roomsForProperty); // Log available rooms
-        setAvailableRooms(roomsForProperty);
+      const propertyID = parseInt(selectedProperty);
+      const roomsForProperty = rooms.filter(room =>
+        room.property?.propertyID === propertyID && !room.occupied
+      );
+      console.log("Filtered available rooms:", roomsForProperty);
+      setAvailableRooms(roomsForProperty);
     } else {
-        setAvailableRooms([]);
+      setAvailableRooms([]);
     }
-}, [selectedProperty, rooms]);
+  }, [selectedProperty, rooms]);
 
-  const fetchRooms = () => {
-    RoomService.getAllRooms()
-      .then((response) => {
-        console.log("Fetched rooms:", response.data);
-        setRooms(response.data);
-      })
-      .catch((error) => {
-        console.error('There was an error fetching the rooms!', error);
-      });
+  const fetchRooms = async () => {
+    try {
+      const response = await RoomService.getAllRooms();
+      console.log("Fetched rooms:", response.data);
+      setRooms(response.data);
+    } catch (error) {
+      console.error('There was an error fetching the rooms!', error);
+    }
   };
 
-  const fetchProperties = () => {
-    PropertyService.getAllProperties()
-      .then((response) => {
-        console.log("Fetched properties:", response.data);
-        setProperties(response.data);
-      })
-      .catch((error) => {
-        console.error('There was an error fetching the properties!', error);
-      });
+  const fetchProperties = async () => {
+    try {
+      const response = await PropertyService.getAllProperties();
+      console.log("Fetched properties:", response.data);
+      setProperties(response.data);
+    } catch (error) {
+      console.error('There was an error fetching the properties!', error);
+    }
   };
 
-  const fetchBusinesses = () => {
-    BusinessService.getAllBusinesses()
-      .then((response) => {
-        console.log("Fetched businesses:", response.data);
-        setBusinesses(response.data);
-      })
-      .catch((error) => {
-        console.error('There was an error fetching the businesses!', error);
-      });
+  const fetchBusinesses = async () => {
+    try {
+      const response = await BusinessService.getAllBusinesses();
+      console.log("Fetched businesses:", response.data);
+      setBusinesses(response.data);
+    } catch (error) {
+      console.error('There was an error fetching the businesses!', error);
+    }
   };
 
   const getAvailableRoomsCount = (propertyID) => {
-    return rooms.filter(room => room.propertyID === propertyID && !room.occupied).length;
+    return rooms.filter(room => room.property?.propertyID === propertyID && !room.occupied).length;
   };
 
   const handleLocationChange = (event) => {
     setSelectedLocation(event.target.value);
+    console.log("Selected Location:", event.target.value);
   };
 
   const handleBusinessChange = (event) => {
     setSelectedBusiness(event.target.value);
+    console.log("Selected Business ID:", event.target.value);
   };
 
   const handlePropertyChange = (event) => {
     const propertyId = event.target.value;
     setSelectedProperty(propertyId);
     setSelectedRoom(''); // Reset room selection when property changes
-
-    console.log("Selected Property ID:", propertyId); // Log selected property
+    console.log("Selected Property ID:", propertyId);
   };
-
 
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
@@ -92,18 +90,37 @@ const StudentHome = () => {
 
   const handleSubmit = () => {
     if (selectedProperty && selectedRoom) {
-      // Handle the application submission logic here
       console.log(`Applying to property: ${selectedProperty}, room: ${selectedRoom}`);
-      // You can add your API call or other logic here
+      // Add API call or other logic here to apply for the selected room
+      console.log(selectedProperty, selectedRoom);
+      const applyForRoom = async () => {
+        try {
+          const updatedRoom = rooms.find(room => room.roomID === parseInt(selectedRoom));
+          if (updatedRoom) {
+            updatedRoom.occupied = true;
+          }
+          const response = await RoomService.updateRoom(updatedRoom);
+          console.log('Successfully applied for the room:', response.data);
+          alert('Successfully applied for the room!');
+          // Refresh the rooms list to reflect the updated room status
+          fetchRooms();
+        } catch (error) {
+          console.error('There was an error applying for the room!', error);
+          alert('There was an error applying for the room. Please try again.');
+        }
+      };
+
+      applyForRoom();
     } else {
       alert('Please select both a property and a room.');
     }
   };
 
   const filteredProperties = properties.filter(property => {
+    const businessID = property.business.businessID;
     return (
       (selectedLocation === '' || property.propertyAddress.includes(selectedLocation)) &&
-      (selectedBusiness === '' || property.businessID === selectedBusiness)
+      (selectedBusiness === '' || property.business.businessID === businessID)
     );
   });
 
@@ -125,8 +142,8 @@ const StudentHome = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredProperties.map((property) => {
-              const business = businesses.find(b => b.businessID === property.businessID);
+            {filteredProperties.map(property => {
+              const business = businesses.find(b => b.businessID === property.business.businessID);
               const availableRoomsCount = getAvailableRoomsCount(property.propertyID);
               return (
                 <tr key={property.propertyID}>
@@ -143,9 +160,9 @@ const StudentHome = () => {
           <h2>Filters</h2>
           <select className="locationDropdown" onChange={handleLocationChange}>
             <option value=''>Location</option>
-            {properties.map(property => (
-              <option key={property.propertyID} value={property.propertyAddress}>
-                {property.propertyAddress}
+            {Array.from(new Set(properties.map(property => property.propertyAddress))).map(address => (
+              <option key={address} value={address}>
+                {address}
               </option>
             ))}
           </select>
@@ -173,11 +190,15 @@ const StudentHome = () => {
         <b>Room</b>
         <select className="roomDropdown" onChange={handleRoomChange} value={selectedRoom}>
           <option value=''>Select Room</option>
-          {availableRooms.map(room => (
-            <option key={room.roomID} value={room.roomID}>
-              Room {room.roomNumber}
-            </option>
-          ))}
+          {availableRooms.length > 0 ? (
+            availableRooms.map(room => (
+              <option key={room.roomID} value={room.roomID}>
+                Room {room.roomNumber}
+              </option>
+            ))
+          ) : (
+            <option value=''>No rooms available</option>
+          )}
         </select>
         <button className="btnSubmit" onClick={handleSubmit}>Submit</button>
       </div>

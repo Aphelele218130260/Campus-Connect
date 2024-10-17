@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/HomePage.css';
+import logo from '../assets/Icon2.png'; // Ensure correct path to the logo
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const HomePage = () => {
     return (
         <div className="homepage">
             <div className="logo-container">
-                <img src="Home Page.png" alt="Campus Connect Logo" className="logo"/>
+                <img src={logo} alt="Campus Connect Logo" className="logo"/>
             </div>
             <h1>Campus Connect</h1>
             <p>Discover the ultimate student living experience at Campus Connect!</p>

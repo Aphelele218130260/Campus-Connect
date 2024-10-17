@@ -13,6 +13,7 @@ import StudentHome from "./components/StudentHome.jsx";
 //import StudentAdministration from './components/StudentAdministration';
 import Business from './components/Business';
 import Property from './components/Property'
+import StudentRegistration from "./components/StudentRegistration.jsx";
  
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/business" element= {<Business/>}/>
             <Route path="/property" element={<Property/>}/>
-                
+              <Route path="/register" element={<StudentRegistration />} />
           </Routes>
         </div>
       </Router>

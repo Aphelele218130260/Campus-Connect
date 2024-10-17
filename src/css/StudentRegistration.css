@@ -1,4 +1,4 @@
-
+/* Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,27 +8,25 @@
 body, html {
     height: 100%;
     width: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #2eabab; /* Background color for the whole screen */
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #2eabab; /* Calm teal background */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevents scrollbars from appearing */
+    overflow-y: scroll; /* Enable vertical scroll */
 }
 
+/* Header Styles */
 .header {
-    background-color: #333; /* Blackish grey color */
+    background-color: #333; /* Dark grey for header */
     color: white;
     display: flex;
     align-items: center;
     padding: 10px 20px;
     width: 100%;
-    position: fixed; /* Fixed position at the top */
+    position: fixed;
     top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure it stays above other content */
+    z-index: 1000; /* Ensure header is above other content */
 }
 
 .header .logo {
@@ -38,100 +36,89 @@ body, html {
 
 .header h1 {
     flex: 1;
-    text-align: center;
-    margin: 0;
+    text-align: center; /* Keeps the text centered */
+    margin-right: 100px; /* Move the heading 5px to the left */
     font-size: 24px;
 }
 
+/* Main Content */
 .main-content {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    padding-top: 80px; /* Margin to account for the fixed header */
+    padding-top: 80px; /* Ensure content doesn't overlap with fixed header */
 }
 
+/* Registration Container */
 .registration-container {
     background-color: #e1f4f3;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
     width: 100%;
-    max-width: 600px; /* Slightly wider form */
-}
-
-.registration-form {
     display: flex;
     flex-direction: column;
 }
 
-.input-group {
+/* Form Styles */
+.registration-form {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    gap: 10px; /* Space between input fields */
-    margin-bottom: 20px; /* Space below input groups */
+    flex-direction: column;
+    width: 100%;
 }
 
+/* Input Group Styles */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between input fields */
+    margin-bottom: 20px;
+}
+
+/* Input Styles */
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    width: calc(50% - 10px);
+input[type="password"],
+select {
+    width: 100%; /* Full width for all inputs */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0; /* Ensure no extra margin */
+}
+
+/* Gender Section Styles */
+select {
+    width: 100%; /* Full width for the dropdown */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
-input[type="text"]:last-child,
-input[type="email"]:last-child,
-input[type="password"]:last-child {
-    width: 100%;
-}
-
-.gender,
-.dob {
-    display: flex;
-    flex-direction: column;
-    width: calc(50% - 10px);
-}
-
-.gender label,
-.dob label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: black; /* Text color for labels */
-}
-
-.dob-inputs {
-    display: flex;
-    gap: 10px; /* Space between select inputs */
-}
-
-.dob-inputs select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
+/* Button Styles */
 .buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    flex-wrap: wrap; /* Allow buttons to stack on small screens */
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center; /* Center buttons vertically */
+    margin-top: 20px; /* Space above buttons */
+    gap: 20px; /* Space between buttons */
 }
 
 button {
-    width: 48%; /* Adjusted width to fit within flex container */
+    width: 100px; /* Fixed width for buttons */
     padding: 12px;
     border: none;
     border-radius: 5px;
     background-color: #b3e4e2;
-    color: white; /* Set text color to white */
+    color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth background color transition */
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -141,25 +128,15 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 600px) {
     .input-group {
-        flex-direction: column;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        width: 100%;
-    }
-
-    .gender,
-    .dob {
-        width: 100%;
+        gap: 15px; /* Adjust gap on smaller screens */
     }
 
     .buttons {
-        flex-direction: column;
+        flex-direction: column; /* Stack buttons vertically */
+        margin-right: 0; /* Remove right margin on smaller screens */
     }
 
     button {
-        width: 100%;
+        width: 100%; /* Full-width for buttons on smaller screens */
     }
 }

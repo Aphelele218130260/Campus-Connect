@@ -1,0 +1,83 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    /* White background */
+    color: #4cb5f5;
+    /* Blue text color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-out;
+    /* Animation for the logo */
+}
+
+.logo {
+    width: 600px;
+    /* Significantly increased logo size */
+    height: auto;
+    /* Maintain aspect ratio */
+    animation: scaleUp 1.5s ease-out;
+    /* Scale-up animation */
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #8f44fd;
+    /* Purple color for the heading */
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #4cb5f5;
+    /* Blue color for the paragraph */
+}
+
+.get-started-btn {
+    background-color: #8f44fd;
+    /* Purple button color */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background-color: #4cb5f5;
+    /* Blue hover effect */
+}
+
+/* Logo animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

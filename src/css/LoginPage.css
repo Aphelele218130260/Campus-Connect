@@ -1,0 +1,114 @@
+/* LoginPage.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    /* White background */
+    color: #4cb5f5;
+    /* Blue text */
+    font-family: Arial, sans-serif;
+}
+
+.page-header {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    color: #8f44fd;
+    /* Purple color for the header */
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #f4f4f9;
+    /* Light background for login box */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container div {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #8f44fd;
+    /* Match with the header purple */
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #4cb5f5;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.role-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.role-btn {
+    width: 48%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.student-btn {
+    background-color: #4cb5f5;
+    /* Blue button */
+    color: white;
+}
+
+.admin-btn {
+    background-color: #8f44fd;
+    /* Purple button */
+    color: white;
+}
+
+.role-btn:hover {
+    opacity: 0.9;
+}
+
+.sign-up-text {
+    color: #4cb5f5;
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        /* Adjust for smaller screens */
+        padding: 20px;
+    }
+}

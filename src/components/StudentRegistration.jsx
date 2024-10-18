@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import StudentService from "../Services/StudentService";
 import '../css/StudentRegistration.css';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/Icon2.png';
 
 const StudentRegistration = () => {
     const [student, setStudent] = useState({
@@ -51,7 +52,7 @@ const StudentRegistration = () => {
         <div className="student-registration">
             {/* Header Section */}
             <header className="header">
-                <img src="path-to-your-logo.png" alt="Logo" className="logo" />
+                <img src={logo} alt="Campus Connect Logo" className="logo"/>
                 <h1>Student Registration</h1>
             </header>
 
@@ -251,3 +252,4 @@ const StudentRegistration = () => {
 };
 
 export default StudentRegistration;
+//

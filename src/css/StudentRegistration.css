@@ -12,7 +12,7 @@
     background-color: #ffffff; /* White background */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     color: #4cb5f5; /* Blue text */
     overflow-y: auto; /* Enable scrolling for longer forms */
@@ -26,9 +26,8 @@
     align-items: center;
     padding: 10px 20px;
     width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds slight shadow */
+    height: 80px; /* Define the height of the header */
 }
 
 .student-registration .header .logo {
@@ -39,7 +38,7 @@
 .student-registration .header h1 {
     flex: 1;
     text-align: center;
-    font-size: 3rem; /* Slightly smaller font size */
+    font-size: 2rem; /* Slightly smaller font size */
     color: #8f44fd; /* Purple color for header */
     margin-right: 70px; /* Move the heading 5px to the left */
 }
@@ -50,8 +49,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 80px; /* Adjusted to sit below fixed header */
-    padding-bottom: 50px; /* Add some bottom padding */
+    padding-top: 20px; /* Padding top to avoid touching the header */
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* Registration Container */
@@ -59,7 +60,7 @@
     background-color: #f4f4f9; /* Light background for the registration box */
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
     display: flex;
@@ -143,5 +144,4 @@
         width: 100%;
         margin-bottom: 10px;
     }
-    /**/
 }

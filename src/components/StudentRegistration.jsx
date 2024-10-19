@@ -10,9 +10,12 @@ const StudentRegistration = () => {
         middleName: "",
         lastName: "",
         email: "",
+        phoneNumber: "",
+        dateOfBirth: "",
         username: "",
         password: "",
         academicInstitution: "",
+        academicCourse: "",
         academicYear: "",
         studentNumber: "",
         addressLine1: "",
@@ -25,6 +28,7 @@ const StudentRegistration = () => {
     });
 
     const [message, setMessage] = useState("");
+   // const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -38,8 +42,47 @@ const StudentRegistration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Gender validation
+        if (student.gender === "") {
+            setError("Please select a gender.");
+            return;  // Prevent form submission
+        } else {
+            setError("");  // Clear error if gender is valid
+        }
+
+        const studentToSubmit = {
+            name: {
+                firstName: student.firstName,
+                middleName: student.middleName,
+                lastName: student.lastName
+            },
+            demographic: {
+                nationality: student.nationality,
+                race: student.race,
+                gender: student.gender,
+                dateOfBirth: student.dateOfBirth
+            },
+            contact: {
+                phoneNumber: student.phoneNumber,
+                email: student.email,
+                addressLine1: student.addressLine1,
+                addressLine2: student.addressLine2,
+                city: student.city,
+                postalCode: student.postalCode
+            },
+            academicInfo: {
+                academicInstitution: student.academicInstitution,
+                academicYear: student.academicYear,
+                studentNumber: student.studentNumber,
+                academicCourse: student.academicCourse
+            },
+            username: student.username,
+            studentPassword: student.password
+        };
+
         try {
-            const response = await StudentService.createStudent(student);
+            const response = await StudentService.createStudent(studentToSubmit);
             setMessage("Student registered successfully!");
             console.log(response.data);
         } catch (error) {
@@ -102,6 +145,28 @@ const StudentRegistration = () => {
                                 onChange={handleChange}
                                 required
                             />
+                            {/* Phone Number */}
+                            <div className="input-group">
+                                <label>Phone Number:</label>
+                                <input
+                                    type="tel"
+                                    name="phoneNumber"
+                                    value={student.phoneNumber}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            {/* Date of Birth */}
+                            <div className="input-group">
+                                <label>Date of Birth:</label>
+                                <input
+                                    type="date"
+                                    name="dateOfBirth"
+                                    value={student.dateOfBirth}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
                         {/* Username */}
                         <div className="input-group">
@@ -132,6 +197,17 @@ const StudentRegistration = () => {
                                 type="text"
                                 name="academicInstitution"
                                 value={student.academicInstitution}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        {/* Academic Course */}
+                        <div className="input-group">
+                            <label>Academic Course:</label>
+                            <input
+                                type="text"
+                                name="academicCourse"
+                                value={student.academicCourse}
                                 onChange={handleChange}
                                 required
                             />
@@ -229,10 +305,11 @@ const StudentRegistration = () => {
                             <label>Gender:</label>
                             <select
                                 name="gender"
-                                value={student.gender}
+                                value={student.gender || ""}
                                 onChange={handleChange}
                                 required
                             >
+                                <option value="" disabled>Select gender</option> {/* Placeholder option */}
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -241,7 +318,7 @@ const StudentRegistration = () => {
                         {/* Buttons */}
                         <div className="buttons">
                             <button type="button" onClick={handleBack} className="back-button">Back</button>
-                            <button type="submit">Register</button>
+                            <button type="submit" disabled={student.gender === ""}>Register</button>
                         </div>
                     </form>
                     {message && <p>{message}</p>}
@@ -252,4 +329,3 @@ const StudentRegistration = () => {
 };
 
 export default StudentRegistration;
-//

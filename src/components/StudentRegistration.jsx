@@ -28,7 +28,7 @@ const StudentRegistration = () => {
     });
 
     const [message, setMessage] = useState("");
-   // const [error, setError] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (e) => {

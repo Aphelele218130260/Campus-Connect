@@ -1,62 +1,66 @@
-/* Global Styles */
-* {
+/* Scoped Styles within .student-registration */
+.student-registration * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body, html {
-    height: 100%;
+.student-registration {
+    height: 100vh;
     width: 100%;
     font-family: 'Arial', sans-serif;
-    background-color: #2eabab; /* Calm teal background */
+    background-color: #ffffff; /* White background */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    overflow-y: scroll; /* Enable vertical scroll */
+    color: #4cb5f5; /* Blue text */
+    overflow-y: auto; /* Enable scrolling for longer forms */
 }
 
 /* Header Styles */
-.header {
-    background-color: #333; /* Dark grey for header */
+.student-registration .header {
+    background-color: #333;
     color: white;
     display: flex;
     align-items: center;
     padding: 10px 20px;
     width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000; /* Ensure header is above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds slight shadow */
+    height: 80px; /* Define the height of the header */
 }
 
-.header .logo {
+.student-registration .header .logo {
     width: 50px;
     margin-right: 20px;
 }
 
-.header h1 {
+.student-registration .header h1 {
     flex: 1;
-    text-align: center; /* Keeps the text centered */
-    margin-right: 100px; /* Move the heading 5px to the left */
-    font-size: 24px;
+    text-align: center;
+    font-size: 2rem; /* Slightly smaller font size */
+    color: #8f44fd; /* Purple color for header */
+    margin-right: 70px; /* Move the heading 5px to the left */
 }
 
 /* Main Content */
-.main-content {
+.student-registration .main-content {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    padding-top: 80px; /* Ensure content doesn't overlap with fixed header */
+    padding-top: 20px; /* Padding top to avoid touching the header */
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* Registration Container */
-.registration-container {
-    background-color: #e1f4f3;
-    padding: 30px;
+.student-registration .registration-container {
+    background-color: #f4f4f9; /* Light background for the registration box */
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
     display: flex;
@@ -64,79 +68,80 @@ body, html {
 }
 
 /* Form Styles */
-.registration-form {
+.student-registration .registration-form {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 /* Input Group Styles */
-.input-group {
+.student-registration .input-group {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Space between input fields */
     margin-bottom: 20px;
 }
 
-/* Input Styles */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
-    width: 100%; /* Full width for all inputs */
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 0; /* Ensure no extra margin */
+.student-registration .input-group label {
+    font-size: 1rem;
+    color: #8f44fd; /* Matching purple color for labels */
+    margin-bottom: 8px;
 }
 
-/* Gender Section Styles */
-select {
-    width: 100%; /* Full width for the dropdown */
+.student-registration .input-group input,
+.student-registration .input-group select {
+    width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 2px solid #4cb5f5; /* Blue border */
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1rem;
+    margin-bottom: 10px;
 }
 
 /* Button Styles */
-.buttons {
+.student-registration .buttons {
     display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    align-items: center; /* Center buttons vertically */
-    margin-top: 20px; /* Space above buttons */
-    gap: 20px; /* Space between buttons */
+    justify-content: space-between; /* Space out buttons */
+    align-items: center;
+    margin-top: 20px;
 }
 
-button {
-    width: 100px; /* Fixed width for buttons */
+.student-registration button {
+    width: 48%; /* Ensure buttons are the same size */
     padding: 12px;
+    font-size: 1rem;
     border: none;
     border-radius: 5px;
-    background-color: #b3e4e2;
-    color: white;
-    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #89b8b5;
+.student-registration button[type="submit"] {
+    background-color: #4cb5f5; /* Blue for Register */
+    color: white;
+}
+
+.student-registration button.back-button {
+    background-color: #8f44fd; /* Purple for Back */
+    color: white;
+}
+
+.student-registration button:hover {
+    opacity: 0.9;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    .input-group {
-        gap: 15px; /* Adjust gap on smaller screens */
+    .student-registration .registration-container {
+        width: 90%;
+        padding: 20px;
     }
 
-    .buttons {
-        flex-direction: column; /* Stack buttons vertically */
-        margin-right: 0; /* Remove right margin on smaller screens */
+    .student-registration .buttons {
+        flex-direction: column;
     }
 
-    button {
-        width: 100%; /* Full-width for buttons on smaller screens */
+    .student-registration button {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

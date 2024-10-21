@@ -13,29 +13,39 @@ function Business() {
   const [city, setCity] = useState('');
   const [postalCode , setPostCode]= useState ('');
   
-  
+  const contact ={email,phoneNumber,addressLine1,addressLine2,city,postalCode};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-      const business = { businessName, businessID,description,
-        email,phoneNumber,addressLine1,addressLine2,city,postalCode}
-
-      const response = await fetch("http://localhost:8080/CampusConnectDb/business/create", {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(business),
+  
+    const business = { businessName, businessID, description, contact };
+  
+    try {
+      const response = await fetch(`http://localhost:8080/CampusConnectDb/business/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          
+        },
+        body: JSON.stringify(business),
       });
-
+  
       if (response.ok) {
-          // Handle successful response
-          console.log('Business created successfully');
+        // Handle successful response
+        console.log('Business created successfully');
       } else {
-          // Handle error response
-          console.error('Failed to create business');
+        // Handle error response
+        console.error('Failed to create business');
       }
-  };
+    } catch (error) {
+      console.error('Network error', error);
+    
+  }finally{
+    e.preventDefault();
+  }}
+  ;
+  
+
 
   const updateBusiness = async () => {
     const userData = { businessName, email };
@@ -76,7 +86,7 @@ const readBusinesses = async() =>{
 
 
 const exitForm = () => {
-  navigate('/home'); 
+  navigate('/home');""
 };
 
 
@@ -92,16 +102,41 @@ const exitForm = () => {
       </div>
       <div className="form-and-table">
         <div className="form-container">
-          <input type="text" placeholder="Business Name" />
-          <input type="text" placeholder="Business Identification Number" />
-          <input type="text" placeholder="Business contact number" />
-          <textarea placeholder="Business Description"></textarea>
-          <input type="text" placeholder="Email Address" />
-          <input type="text" placeholder="Phone Number" />
-          <input type="text" placeholder="Address Line 1" />
-          <input type="text" placeholder="Address Line 2" />
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Postal Code" />
+
+          <input type="text" 
+          value ={businessName}
+          onChange ={(e) => setBusinessName(e.target.value)}
+          placeholder="Business Name" 
+          required/>
+
+          <input type="text"
+           value ={businessID}
+           onChange ={(e) => setBusinessID(e.target.value)}
+            placeholder="Business Identification Number" />
+
+          <input type="text" 
+           value ={description}
+          onChange ={(e) => setDescription(e.target.value)}placeholder="Business Description" />
+
+
+          <input type="email" value ={email}
+          onChange ={(e) => setEmail(e.target.value)} placeholder="Email Address" />
+
+          <input type="text"  value ={phoneNumber}
+          onChange ={(e) => setPhoneNumber(e.target.value)} placeholder="Phone Number" />
+
+          <input type="text" value ={addressLine1}
+          onChange ={(e) => setAddress1(e.target.value)} placeholder="Address Line 1" />
+
+          <input type="text"  value ={addressLine2}
+          onChange ={(e) => setAddressLine2(e.target.value)}placeholder="Address Line 2" />
+
+          <input type="text"  value ={city}
+          onChange ={(e) => setCity(e.target.value)}placeholder="City" />
+
+          <input type="text"  value ={postalCode}
+          onChange ={(e) => setPostCode(e.target.value)}placeholder="Postal Code" />
+
         </div>
         <div className="table-container">
           <table>

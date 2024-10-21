@@ -85,6 +85,10 @@ const StudentRegistration = () => {
             const response = await StudentService.createStudent(studentToSubmit);
             setMessage("Student registered successfully!");
             console.log(response.data);
+
+            // Redirect to /login page after successful registration
+            navigate("/login");
+
         } catch (error) {
             setMessage("Error registering student.");
             console.error(error);
@@ -145,28 +149,28 @@ const StudentRegistration = () => {
                                 onChange={handleChange}
                                 required
                             />
-                            {/* Phone Number */}
-                            <div className="input-group">
-                                <label>Phone Number:</label>
-                                <input
-                                    type="tel"
-                                    name="phoneNumber"
-                                    value={student.phoneNumber}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            {/* Date of Birth */}
-                            <div className="input-group">
-                                <label>Date of Birth:</label>
-                                <input
-                                    type="date"
-                                    name="dateOfBirth"
-                                    value={student.dateOfBirth}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                        </div>
+                        {/* Phone Number */}
+                        <div className="input-group">
+                            <label>Phone Number:</label>
+                            <input
+                                type="tel"
+                                name="phoneNumber"
+                                value={student.phoneNumber}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        {/* Date of Birth */}
+                        <div className="input-group">
+                            <label>Date of Birth:</label>
+                            <input
+                                type="date"
+                                name="dateOfBirth"
+                                value={student.dateOfBirth}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
                         {/* Username */}
                         <div className="input-group">

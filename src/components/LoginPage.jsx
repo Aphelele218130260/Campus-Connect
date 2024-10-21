@@ -1,6 +1,8 @@
-import React, { useState } from 'react'; // Import useState for state management
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../css/LoginPage.css';
+import StudentService from '../Services/StudentService';  // Import your StudentService
+import AdministratorService from '../Services/AdministratorService'; // Import AdministratorService
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -9,35 +11,39 @@ const LoginPage = () => {
     const [error, setError] = useState(''); // State for error messages
 
     const handleLogin = async (role) => {
-        // Simulate a request to your server's login API
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password, role }), // Pass role (student/admin)
-            });
+        if (role === 'student') {
+            // If the user selects student role
+            try {
+                const students = await StudentService.getAllStudents();  // Fetch all students
+                const student = students.find((s) => s.username === username && s.studentPassword === password);  // Check if the username and password match
 
-            const data = await response.json();
-
-            if (data.success) {
-                // Navigate based on the role
-                if (role === 'student') {
-                    navigate('/student'); // Navigate to Student Dashboard
+                if (student) {
+                    navigate('/student');  // Navigate to Student Dashboard if student is found
                 } else {
-                    navigate('/RoomAdministration'); // Navigate to Admin Dashboard
+                    setError('Invalid student credentials.');
                 }
-            } else {
-                setError(data.message); // Display error message from server
+            } catch (err) {
+                setError('Error during login. Please try again.');
             }
-        } catch (err) {
-            setError('Login failed. Please try again.');
+        } else if (role === 'admin') {
+            // Admin login logic
+            try {
+                const admins = await AdministratorService.getAllAdministrators(); // Fetch all administrators
+                const admin = admins.find((a) => a.adminUsername === username && a.adminPassword === password); // Check if the username and password match
+
+                if (admin) {
+                    navigate('/RoomAdministration'); // Navigate to Admin Dashboard if admin is found
+                } else {
+                    setError('Invalid admin credentials.');
+                }
+            } catch (err) {
+                setError('Error during admin login. Please try again.');
+            }
         }
     };
 
     const handleSignUp = () => {
-        navigate('/register'); // Navigate to the SignUp page
+        navigate('/register');  // Navigate to the SignUp page
     };
 
     return (

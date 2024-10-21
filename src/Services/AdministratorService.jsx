@@ -1,32 +1,66 @@
+// src/Services/AdministratorService.js
 import axios from "axios";
 
-const ADMINISTRATOR_API_BASE_URL = "http://localhost:8080/administrator";
+const API_URL = "http://localhost:8080/administrator";  // Ensure your backend is running on this URL and port
 
-class AdministratorService {
-    // Fetch all administrators
-    getAllAdministrators() {
-        return axios.get(`${ADMINISTRATOR_API_BASE_URL}/getAll`);
+// Create a new administrator
+const createAdministrator = async (administrator) => {
+    try {
+        const response = await axios.post(`${API_URL}/create`, administrator);
+        return response.data;
+    } catch (error) {
+        console.error("There was an error creating the administrator!", error);
+        throw error;
     }
-    
-    // Fetch a single administrator by ID
-    getAdministratorById(administratorID) {
-        return axios.get(`${ADMINISTRATOR_API_BASE_URL}/read${administratorID}`);
-    }
-    
-    // Create a new administrator
-    createAdministrator(administrator) {
-        return axios.post(`${ADMINISTRATOR_API_BASE_URL}/create`, administrator);
-    }
-    
-    // Update an administrator
-    updateAdministrator(administrator) {
-        return axios.post(`${ADMINISTRATOR_API_BASE_URL}/update`, administrator);
-    }
-    
-    // Delete an administrator
-    deleteAdministrator(administratorID) {
-        return axios.delete(`${ADMINISTRATOR_API_BASE_URL}/delete${administratorID}`);
-    }
-}
+};
 
-export default new AdministratorService();
+// Get all administrators
+const getAllAdministrators = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/getAll`);
+        return response.data;
+    } catch (error) {
+        console.error("There was an error fetching all administrators!", error);
+        throw error;
+    }
+};
+
+// Read an administrator by ID
+const getAdministratorById = async (administratorID) => {
+    try {
+        const response = await axios.get(`${API_URL}/read/${administratorID}`);
+        return response.data;
+    } catch (error) {
+        console.error("There was an error reading the administrator!", error);
+        throw error;
+    }
+};
+
+// Update an administrator
+const updateAdministrator = async (administrator) => {
+    try {
+        const response = await axios.put(`${API_URL}/update`, administrator);
+        return response.data;
+    } catch (error) {
+        console.error("There was an error updating the administrator!", error);
+        throw error;
+    }
+};
+
+// Delete an administrator
+const deleteAdministrator = async (administratorID) => {
+    try {
+        await axios.delete(`${API_URL}/delete/${administratorID}`);
+    } catch (error) {
+        console.error("There was an error deleting the administrator!", error);
+        throw error;
+    }
+};
+
+export default {
+    createAdministrator,
+    getAllAdministrators,
+    getAdministratorById,
+    updateAdministrator,
+    deleteAdministrator,
+};
